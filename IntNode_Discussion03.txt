@@ -1,0 +1,61 @@
+public class SLList {
+	private IntNode first;
+	private int size;
+	
+	private class IntNode {
+      public int item;
+      public IntNode next;
+      public IntNode(int item, IntNode next) {
+         this.item = item;
+         this.next = next;
+      }
+	}
+   
+	public void addFirst(int x) {
+      first = new IntNode(x, first);
+      size = size + 1;
+	}
+   
+	public void insert(int item, int position) {
+		IntNode L = first;
+		if(position < size) {
+			for(int i = 0; i < position; i++) {
+				L = L.next;
+			}        
+			int temp = L.item;
+			IntNode rest = L.next;
+			L.item = item;
+			L.next = new IntNode(temp, rest);
+			size = size + 1;   
+		} else {
+			for(int i = 0; i < size-1; i++) {
+            L = L.next;
+			}
+			L.next = new IntNode(item, null);
+			size = size + 1;
+		}   
+	}
+	
+	public void reverse() {
+		IntNode CurrentNode = first;
+		IntNode previousaddress = null;
+		while(CurrentNode != null) {
+			IntNode nextaddress = CurrentNode.next;
+			CurrentNode.next = previousaddress;
+			previousaddress = CurrentNode;
+			CurrentNode = nextaddress;
+		}
+		first = previousaddress;
+	}
+   
+	public static void main(String[] args) {
+		SLList p = new SLList();
+		p.addFirst(5);
+		p.addFirst(4);
+		p.addFirst(3);
+		p.addFirst(2);
+		p.addFirst(1);
+		SLList x = p.reverse();
+	}
+
+}
