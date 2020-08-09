@@ -108,6 +108,15 @@ public class LinkedListDeque<T> {
         }
     }
 
+    /** unit test for myself */
 
+    public static void main(String[] args) {
+        LinkedListDeque<Integer> s1= new LinkedListDeque<>();
+        s1.addFirst(1);
+        s1.addFirst(2);
+        s1.addFirst(3);
+        s1.addFirst(4);
+        s1.removeFirst();
+    }
 
 }
